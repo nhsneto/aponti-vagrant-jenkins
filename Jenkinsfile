@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Install") {
+            steps {
+                sh "cd /app && npm install"
+            }
+        }
+
+        stage("Build") {
+            steps {
+                sh "cd /app && npm run build"
+            }
+        }
+
+        stage("Test") {
+            steps {
+                sh "cd /app && npm test"
+            }
+        }
+
+        stage("Start") {
+            steps {
+                sh "cd /app && npm start"
+            }
+        }
+
+        // ############## Terminar ##############
+        stage("Deploy") {
+            steps {
+                sshagent(credentials: ["deploy"]) {
+                    sh "" 
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline finalizada com sucesso."
+        }
+
+        failure {
+            echo "Pipeline falhou."
+        }
+    }
+}
