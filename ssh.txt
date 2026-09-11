@@ -19,7 +19,7 @@ vagrant@host:~$ sudo ssh-keyscan -H 192.168.33.20 | sudo tee -a /var/lib/jenkins
 No browser, acessar o jenkins em 192.168.33.10:8080
 Selecionar o "ssh agent" plugin para instalação
 
-7. Adicionar a chave privada no jenkins para poder se comunicar com a máquina prod:
+7. Adicionar a chave privada da máquina host no jenkins para autenticar o servidor jenkins com a máquina host durante a pipeline (evita o pedido de confirmação de conexão ssh durante a pipeline):
 Jenkins > Gerenciar Jenkins > Credentials > SSH Username with private Key
 Colocar o id da chave: deploy (um exemplo apenas)
 Colar a chave privada da máquina host: colar o conteúdo de ~/.ssh/id_ed25519
