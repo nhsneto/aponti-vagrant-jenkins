@@ -4,33 +4,33 @@ pipeline {
     stages {
         stage("Install") {
             steps {
-                sh "cd /app && npm install"
+                sh "cd app && npm install"
             }
         }
 
         stage("Build") {
             steps {
-                sh "cd /app && npm run build"
+                sh "cd app && npm run build"
             }
         }
 
         stage("Test") {
             steps {
-                sh "cd /app && npm test"
+                sh "cd app && npm test"
             }
         }
 
         stage("Start") {
             steps {
-                sh "cd /app && npm start"
+                sh "cd app && npm start"
             }
         }
 
         // ############## Terminar ##############
         stage("Deploy") {
             steps {
-                sshagent(credentials: ["deploy"]) {
-                    sh "" 
+                sshagent(credentials: ["app"]) {
+                    sh "ssh vagrant@192.168.33.20 hostname"
                 }
             }
         }
