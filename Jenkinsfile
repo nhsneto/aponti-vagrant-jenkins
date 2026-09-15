@@ -20,12 +20,6 @@ pipeline {
             }
         }
 
-        stage("Start") {
-            steps {
-                sh "cd app && npm start"
-            }
-        }
-
         // ############## Terminar ##############
         stage("Deploy") {
             steps {
