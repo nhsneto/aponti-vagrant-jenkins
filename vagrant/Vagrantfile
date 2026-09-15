@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
       vb.cpus = 1
     end
 
-    host.vm.provision "shell", path: "scripts/provision-jenkins.sh"
+    host.vm.provision "shell", path: "scripts/setup-jenkins.sh"
   end
 
   config.vm.define "prod" do |prod|
