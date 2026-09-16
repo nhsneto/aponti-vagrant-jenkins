@@ -23,7 +23,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 sshagent(credentials: ["app"]) {
-                    sh "scp -r app/ vagrant@192.168.33.20:/home/app"
+                    sh "scp -r app/ vagrant@192.168.33.20:/home/vagrant/"
                 }
             }
         }
