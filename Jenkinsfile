@@ -20,11 +20,10 @@ pipeline {
             }
         }
 
-        // ############## Terminar ##############
         stage("Deploy") {
             steps {
                 sshagent(credentials: ["app"]) {
-                    sh "ssh vagrant@192.168.33.20 hostname"
+                    sh "scp -r app/ vagrant@192.168.33.20:/home/app"
                 }
             }
         }
